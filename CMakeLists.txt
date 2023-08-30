@@ -58,11 +58,11 @@ ELSE(CURL_FOUND)
   MESSAGE(FATAL_ERROR "Could not find the CURL library and development files.")
 ENDIF(CURL_FOUND)
 
-find_package(unofficial-curlpp CONFIG REQUIRED)
-list(APPEND requiredlibs unofficial::curlpp::curlpp)
+find_package(curlpp CONFIG REQUIRED)
+list(APPEND requiredlibs curlpp::curlpp)
 
-find_package(unofficial-inih CONFIG REQUIRED)
-list(APPEND requiredlibs unofficial::inih::inireader)
+find_package(inih CONFIG REQUIRED)
+list(APPEND requiredlibs inih::inireader)
 
 find_package(nlohmann_json CONFIG REQUIRED)
 list(APPEND requiredlibs nlohmann_json::nlohmann_json)
