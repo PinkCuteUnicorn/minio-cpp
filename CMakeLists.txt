@@ -50,7 +50,7 @@ IF(CMAKE_COMPILER_IS_GNUCC)
   ENDIF()
 ENDIF()
 
-find_package(CURL REQUIRED)
+find_package(CURL)
 IF(CURL_FOUND)
   INCLUDE_DIRECTORIES(${CURL_INCLUDE_DIRS})
   list(APPEND requiredlibs CURL::libcurl)
@@ -58,22 +58,25 @@ ELSE(CURL_FOUND)
   MESSAGE(FATAL_ERROR "Could not find the CURL library and development files.")
 ENDIF(CURL_FOUND)
 
-find_package(curlpp CONFIG REQUIRED)
-list(APPEND requiredlibs curlpp::curlpp)
+find_package(curlpp CONFIG)
+list(APPEND requiredlibs curlpp)
 
-find_package(inih CONFIG REQUIRED)
-list(APPEND requiredlibs inih::inireader)
+find_package(inih CONFIG)
+list(APPEND requiredlibs inih)
 
-find_package(nlohmann_json CONFIG REQUIRED)
-list(APPEND requiredlibs nlohmann_json::nlohmann_json)
+find_package(nlohmann_json CONFIG)
+list(APPEND requiredlibs nlohmann_json)
 
-find_package(pugixml CONFIG REQUIRED)
+find_package(z CONFIG)
+list(APPEND requiredlibs z)
+
+find_package(pugixml CONFIG)
 list(APPEND requiredlibs pugixml)
 
-find_package(OpenSSL REQUIRED)
+find_package(OpenSSL)
 IF(OPENSSL_FOUND)
   INCLUDE_DIRECTORIES(${OPENSSL_INCLUDE_DIR})
-  list(APPEND requiredlibs OpenSSL::SSL OpenSSL::Crypto) # bugfix, because libcrypto is not found automatically
+  list(APPEND  requiredlibs ssl crypto)
 ELSE(OPENSSL_FOUND)
   MESSAGE(FATAL_ERROR "Could not find the OpenSSL library and development files.")
 ENDIF(OPENSSL_FOUND)
